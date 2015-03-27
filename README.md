@@ -1,2 +1,2 @@
 # leetcode
-leetcode
+leetcode答案收集。
