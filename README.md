@@ -1,6 +1,7 @@
-# leetcode
-=======
-leetcode答案收集。
-2015-4-7上传1-10C++。
-2015-4-7上传1-20C++。
-2015-4-8上传1-30C++。带整理
+leetcode-exercises
+
+My leetcode accepted codes for reference,
+
+online judge platform(https://leetcode.com/).
+
+All rights reserved.
