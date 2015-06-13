@@ -1,4 +1,4 @@
-leetcode-exercises
+*leetcode-exercises
 
 My leetcode accepted codes for reference,
 
