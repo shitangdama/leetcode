@@ -1,10 +1,3 @@
-/*
-*  Author:      illuz <iilluzen[at]gmail.com>
-*  File:        AC_simulation_1.cpp
-*  Create Date: 2014-12-02 23:11:37
-*  Descripton:  simulateion
-*/
-
 #include <bits/stdc++.h>
 
 using namespace std;
