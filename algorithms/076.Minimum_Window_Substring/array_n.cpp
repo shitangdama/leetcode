@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -43,6 +44,53 @@ public:
     }
 };
 
+=======
+#include <bits/stdc++.h>
+
+using namespace std;
+
+class Solution {
+public:
+    string minWindow(string S, string T) {
+        if (S.empty() || T.empty())
+            return "";
+        int slen = S.length(), tlen = T.length();
+        int res_pos = 0;                // position of result
+        int min_len = INT_MAX;
+        int count = 0;                  // match count in window
+        int sta[255] = {0};             // array map: state and window
+        int wnd[255] = {0};
+        int slow = 0, fast = 0;         // pointer
+
+        // deal T
+        for (int i = 0; i < tlen; ++i)
+            ++sta[T[i]];
+
+        // count
+        for (int fast = 0; fast < slen; ++fast) {
+            int idx = S[fast];
+            ++wnd[idx];
+            if (wnd[idx] <= sta[idx])
+                ++count;
+            
+            // match enough
+            if (count >= tlen) {
+                while (wnd[S[slow]] > sta[S[slow]])
+                    --wnd[S[slow++]];      // equal to: wnd[S[slow]]--; slow++;
+                if (fast - slow + 1 < min_len) {
+                    min_len = fast - slow + 1;
+                    res_pos = slow;
+                }
+                // make it not enough again
+                --wnd[S[slow++]];
+                --count;
+            }
+        }
+        return S.substr(res_pos, min_len == INT_MAX ? 0 : min_len);
+    }
+};
+
+>>>>>>> 6200c8704614e918c8bfa5357c648dd1b4f7eb74
 // LeetCode, Minimum Window Substring
 // 时间复杂度O(n)，空间复杂度O(1)
 class Solution 2{
@@ -87,6 +135,7 @@ public:
         else return S.substr(min_start, minWidth);
     }
 };
+<<<<<<< HEAD
 
 
 int main() {
@@ -97,3 +146,15 @@ int main() {
     return 0;
 }
 
+=======
+
+
+int main() {
+    string S, T;
+    Solution s;
+    while (cin >> S >> T)
+        cout << s.minWindow(S, T) << endl;
+    return 0;
+}
+
+>>>>>>> 6200c8704614e918c8bfa5357c648dd1b4f7eb74

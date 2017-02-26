@@ -26,4 +26,3 @@ class Solution:
             current.next = ListNode(1)
 
         return dummy.next
-

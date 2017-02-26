@@ -22,13 +22,22 @@ public:
 
         for (int i = 1;i < len; ++i) {
             p[i] = mx > i ? min(p[2 * id - i], mx - i) : 1;
+<<<<<<< HEAD
              //分为两种情况，mx=id+i；2×id-i回文的最左端，p[2 * id - i]是左端的回文数，mx-i是右侧的未检测数，i>=mx超出范围。
+=======
+             //分为两种情况，mx=id+i；2×id-i回文的最左端，p[2 * id - i]是左端的回文数，mx-i是右侧的未检测数，i>=mx超出范围。
+>>>>>>> 6200c8704614e918c8bfa5357c648dd1b4f7eb74
 
             while (t[i + p[i]] == t[i - p[i]])
                 p[i]++;
             if (i + p[i] > mx) {
+<<<<<<< HEAD
                 mx = i + p[i];  //更新右端mx指针
                 id = i;  //更新id
+=======
+                mx = i + p[i];  //更新右端mx指针
+                id = i;  //更新id
+>>>>>>> 6200c8704614e918c8bfa5357c648dd1b4f7eb74
             }
             if (mmax < p[i]) {
                 mmax = p[i];

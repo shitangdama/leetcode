@@ -11,7 +11,11 @@ public:
     int i = 0;
     int len = str.length();
 
+<<<<<<< HEAD
     while (i < len && (str[i] == ' ' || str[i] == '\n' || str[i] == '\t'))
+=======
+    while (i < len && (str[i] == ' ' || str[i] == '\n' || str[i] == '\t'))
+>>>>>>> 6200c8704614e918c8bfa5357c648dd1b4f7eb74
         ++i;
 
     if (i == len)

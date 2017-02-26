@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 public class Solution {
     public int candy(int[] ratings) {
         if(ratings == null || ratings.length == 0) {
@@ -22,4 +23,30 @@ public class Solution {
         sum += count[0];
         return sum;
     }
+=======
+public class Solution {
+    public int candy(int[] ratings) {
+        if(ratings == null || ratings.length == 0) {
+            return 0;
+        }
+
+        int[] count = new int[ratings.length];
+        Arrays.fill(count, 1);
+        int sum = 0;
+        for(int i = 1; i < ratings.length; i++) {
+            if(ratings[i] > ratings[i - 1]) {
+                count[i] = count[i - 1] + 1;
+            }
+        }
+
+        for(int i = ratings.length - 1; i >= 1; i--) {
+            sum += count[i];
+            if(ratings[i - 1] > ratings[i] && count[i - 1] <= count[i]) {  // second round has two conditions
+                count[i-1] = count[i] + 1;
+            }
+        }
+        sum += count[0];
+        return sum;
+    }
+>>>>>>> 6200c8704614e918c8bfa5357c648dd1b4f7eb74
 }

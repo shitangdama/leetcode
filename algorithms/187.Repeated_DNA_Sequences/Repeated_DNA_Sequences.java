@@ -49,6 +49,7 @@ public class Solution {
         int[] input = {1, 2, 3, 1};
         System.out.println(s.findRepeatedDnaSequences("AAAAAAAAAAAA"));
     }
+<<<<<<< HEAD
 }
 
 public class Solution {
@@ -85,4 +86,42 @@ public class Solution {
         }
         return result;
     }
+=======
+}
+
+public class Solution {
+    public int encode(String s) {
+        int sum = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == 'A') {
+                sum = sum * 4;
+            } else if (s.charAt(i) == 'C') {
+                sum = sum * 4 + 1;
+            } else if (s.charAt(i) == 'G') {
+                sum = sum * 4 + 2;
+            } else {
+                sum = sum * 4 + 3;
+            }
+        }
+        return sum;
+    }
+    public List<String> findRepeatedDnaSequences(String s) {
+        HashSet<Integer> hash = new HashSet<Integer>();
+        HashSet<String> dna = new HashSet<String>();
+        for (int i = 9; i < s.length(); i++) {
+            String subString = s.substring(i - 9, i + 1);
+            int encoded = encode(subString);
+            if (hash.contains(encoded)) {
+                dna.add(subString);
+            } else {
+                hash.add(encoded);
+            }
+        }
+        List<String> result = new ArrayList<String>();
+        for (String d: dna) {
+            result.add(d);
+        }
+        return result;
+    }
+>>>>>>> 6200c8704614e918c8bfa5357c648dd1b4f7eb74
 }

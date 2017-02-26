@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Time:  O(4^n / n^(3/2)) ~= Catalan numbers
 # Space: O(n)
 
@@ -19,3 +20,26 @@ class Solution:
 
 if __name__ == "__main__":
     print Solution().generateParenthesis(3)
+=======
+# Time:  O(4^n / n^(3/2)) ~= Catalan numbers
+# Space: O(n)
+
+class Solution:
+    # @param an integer
+    # @return a list of string
+    def generateParenthesis(self, n):
+        result = []
+        self.generateParenthesisRecu(result, "", n, n)
+        return result
+    
+    def generateParenthesisRecu(self, result, current, left, right):
+        if left == 0 and right == 0:
+            result.append(current)
+        if left > 0:
+            self.generateParenthesisRecu(result, current + "(", left - 1, right)
+        if left < right:
+            self.generateParenthesisRecu(result, current + ")", left, right - 1)
+
+if __name__ == "__main__":
+    print Solution().generateParenthesis(3)
+>>>>>>> 6200c8704614e918c8bfa5357c648dd1b4f7eb74

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -65,3 +66,72 @@ int main() {
     return 0;
 }
 
+=======
+#include <bits/stdc++.h>
+
+using namespace std;
+
+class Solution {
+private:
+    bool vis[N][N];
+    int dx[4] = {0, 1, 0, -1};
+    int dy[4] = {1, 0, -1, 0};
+
+    bool checkPoint(int x, int y, int n) {
+        return (x >= 0 && x < n && y >= 0 && y < n && !vis[x][y]);
+    }
+
+    bool checkNext(int x, int y, int n) {
+        int tx, ty;
+        for (int i = 0; i < 4; i++) {
+            tx = x + dx[i];
+            ty = y + dy[i];
+            if (checkPoint(tx, ty, n))
+                return true;
+        }
+        return false;
+    }
+
+public:
+    vector<vector<int> > generateMatrix(int n) {
+
+        // generate a new matrix
+        vector<vector<int> > matrix;
+        for (int i = 0; i < n; i++)
+            matrix.push_back(vector<int>(n));
+
+        if (n == 0)
+            return matrix;
+        memset(vis, 0, sizeof(vis));
+        int curx = 0, cury = 0, curd = 0, cnt = 1;
+        vis[curx][cury] = true;
+        matrix[curx][cury] = cnt++;
+        while (checkNext(curx, cury, n)) {
+            if (checkPoint(curx + dx[curd], cury + dy[curd], n)) {
+                curx += dx[curd];
+                cury += dy[curd];
+                vis[curx][cury] = true;
+                matrix[curx][cury] = cnt++;
+            } else {
+                curd = (curd + 1) % 4;
+            }
+        }
+        return matrix;
+    }
+};
+
+int main() {
+    int n;
+    Solution s;
+    while (cin >> n) {
+        vector<vector<int> > ans = s.generateMatrix(n);
+        for (auto &i : ans) {
+            for (auto &j : i)
+                cout << j << ' ';
+            cout << endl;
+        }
+    }
+    return 0;
+}
+
+>>>>>>> 6200c8704614e918c8bfa5357c648dd1b4f7eb74

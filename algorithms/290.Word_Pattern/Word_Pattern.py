@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 class Solution(object):
     def wordPattern(self, pattern, str):
         """
@@ -16,3 +17,23 @@ class Solution(object):
             d1[i[0]]=i[1]
             d2[i[1]]=i[0]
         return len(d1) == len(d2)
+=======
+class Solution(object):
+    def wordPattern(self, pattern, str):
+        """
+        :type pattern: str
+        :type str: str
+        :rtype: bool
+        """
+        # can be solved by two dictionaries
+        a = list(pattern)
+        b = str.split()
+        if len(a) != len(b):
+            return False
+        d1 = {}
+        d2 = {}
+        for i in zip(a,b):
+            d1[i[0]]=i[1]
+            d2[i[1]]=i[0]
+        return len(d1) == len(d2)
+>>>>>>> 6200c8704614e918c8bfa5357c648dd1b4f7eb74

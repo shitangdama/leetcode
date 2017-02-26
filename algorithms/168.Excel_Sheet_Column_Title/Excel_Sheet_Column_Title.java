@@ -21,6 +21,7 @@ public class Solution {
     }
 
 }
+<<<<<<< HEAD
 /* Excel Sheet Column Title */
 /* O£¨1£©space
  * O(log26(N)) time
@@ -62,4 +63,47 @@ public class Solution {
     }
     
     
+=======
+/* Excel Sheet Column Title */
+/* O£¨1£©space
+ * O(log26(N)) time
+ */
+public class Solution {
+    public String convertToTitle(int n) {
+        if (n <= 0) return "";
+        
+        StringBuilder builder = new StringBuilder();
+        
+        while ( n > 0) {
+        	if ( n <= 26) {
+        		builder.insert(0, (char)('A' + (n-1)));
+        		break;
+        	} else {
+        		int v = (n-1) % 26;
+           		builder.insert(0, (char)('A' + v));
+           	    n = (n-1)/26;
+        	}
+        	
+        }
+        
+        return builder.toString();
+    }
+    
+    
+    public String convertToTitle2(int n) {
+        if (n <= 0) return "";
+        
+        StringBuilder builder = new StringBuilder();
+        
+        while ( n > 0) {
+       		int v = (n-1) % 26;
+       		builder.insert(0, (char)('A' + v));
+       	    n = (n-1)/26;
+        }
+        
+        return builder.toString();
+    }
+    
+    
+>>>>>>> 6200c8704614e918c8bfa5357c648dd1b4f7eb74
 }

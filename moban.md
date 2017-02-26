@@ -40,3 +40,13 @@ BFS（显式用队列）
 DFS（隐式用栈）（即递归）
 当然，对于DFS，用递归可能会造成栈溢出，所以也可以更改为显示栈。
 BFS：典型例题：P101 对于二叉树的层次遍历，P108对于图的走迷宫最短路径
+
+将（起始）首节点加入队列： q.push(head);
+标记首节点已经被访问：     isvisited[head]=true;
+以下自动反应：            while(!q.empty())
+                         {
+                            int temp=q.front();
+                            q.pop();
+                            访问temp，并标记temp已被访问过，将temp的子相关节点加入队列
+                            q.push(temp相关节点);
+                          }

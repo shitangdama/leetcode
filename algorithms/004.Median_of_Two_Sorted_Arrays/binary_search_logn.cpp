@@ -6,7 +6,11 @@ class Solution {
 private:
     double findKthSortedArrays(int A[], int m, int B[], int n, int k) {
     if (m > n) {
+<<<<<<< HEAD
         return findKthSortedArrays(B, n, A, m, k);
+=======
+        return findKthSortedArrays(B, n, A, m, k);
+>>>>>>> 6200c8704614e918c8bfa5357c648dd1b4f7eb74
         }
     if (m == 0) {
         return B[k - 1];
@@ -23,10 +27,17 @@ private:
         return A[pa - 1];
     }
 public:
+<<<<<<< HEAD
     double findMedianSortedArrays(int A[], int m, int B[], int n) {
         int total = m + n;
         if (total & 0x1) {
             return findKthSortedArrays(A, m, B, n, total / 2 + 1);
+=======
+    double findMedianSortedArrays(int A[], int m, int B[], int n) {
+        int total = m + n;
+        if (total & 0x1) {
+            return findKthSortedArrays(A, m, B, n, total / 2 + 1);
+>>>>>>> 6200c8704614e918c8bfa5357c648dd1b4f7eb74
         }else {
             return (findKthSortedArrays(A, m, B, n, total / 2 + 1) + findKthSortedArrays(A, m, B, n, total / 2)) / 2.0;
         }
@@ -45,4 +56,8 @@ int main() {
         cout << s.findMedianSortedArrays(A, n, B, m) << endl;
     }
     return 0;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 6200c8704614e918c8bfa5357c648dd1b4f7eb74

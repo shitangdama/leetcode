@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -41,3 +42,48 @@ int main() {
     return 0;
 }
 
+=======
+#include <bits/stdc++.h>
+
+using namespace std;
+
+class Solution {
+public:
+    string addBinary(string a, string b) {
+        int alen = a.length(), blen = b.length();
+        reverse(a.begin(), a.end());
+        reverse(b.begin(), b.end());
+        // cout << a << endl;
+        string ans;
+        bool add = false;
+        for (int i = 0; i < alen || i < blen; i++) {
+            if (i >= alen)
+                a += '0';
+            if (i >= blen)
+                b += '0';
+            if (a[i] == '1' && b[i] == '1') {
+                ans += add + '0';
+                add = 1;
+            } else if (a[i] == '1' || b[i] == '1') {
+                ans += !add + '0';
+            } else {
+                ans += add + '0';
+                add = 0;
+            }
+        }
+        if (add)
+            ans += '1';
+        
+        reverse(ans.begin(), ans.end());
+        return ans;
+    }
+};
+int main() {
+    Solution s;
+    string a, b;
+    while (cin >> a >> b)
+        cout << s.addBinary(a, b) << endl;
+    return 0;
+}
+
+>>>>>>> 6200c8704614e918c8bfa5357c648dd1b4f7eb74

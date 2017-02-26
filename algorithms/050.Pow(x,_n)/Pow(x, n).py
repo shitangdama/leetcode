@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Time:  O(logn)
 # Space: O(logn)
 
@@ -23,3 +24,30 @@ class Solution:
 if __name__ == "__main__":
     print Solution().pow(3, 5)
     print Solution().pow(3, -5)
+=======
+# Time:  O(logn)
+# Space: O(logn)
+
+class Solution:
+    # @param x, a float
+    # @param n, a integer
+    # @return a float
+    def pow(self, x, n):
+        if n < 0:
+            return 1 / self.powRecu(x, -n)
+        
+        return self.powRecu(x, n)
+    
+    def powRecu(self, x, n):
+        if n == 0:
+            return 1.0
+        
+        if n % 2 == 0:
+            return self.powRecu(x * x, n / 2)
+        else:
+            return x * self.powRecu(x * x, n / 2)
+
+if __name__ == "__main__":
+    print Solution().pow(3, 5)
+    print Solution().pow(3, -5)
+>>>>>>> 6200c8704614e918c8bfa5357c648dd1b4f7eb74

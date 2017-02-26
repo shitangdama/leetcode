@@ -32,6 +32,7 @@ public class Solution {
         return res;
     }
 
+<<<<<<< HEAD
    
 public class Solution {
     public ArrayList<ArrayList<Integer>> pathSum(TreeNode root, int sum) {
@@ -68,6 +69,44 @@ public class Solution {
 
 
 
+=======
+   
+public class Solution {
+    public ArrayList<ArrayList<Integer>> pathSum(TreeNode root, int sum) {
+        ArrayList<ArrayList<Integer>> rst = new ArrayList<ArrayList<Integer>>();
+        ArrayList<Integer> solution = new ArrayList<Integer>();
+
+        findSum(rst, solution, root, sum);
+        return rst;
+    }
+
+    private void findSum(ArrayList<ArrayList<Integer>> result, ArrayList<Integer> solution, TreeNode root, int sum){
+        if (root == null) {
+            return;
+        }
+
+        sum -= root.val;
+
+        if (root.left == null && root.right == null) {
+            if (sum == 0){
+                solution.add(root.val);
+                result.add(new ArrayList<Integer>(solution));
+                solution.remove(solution.size()-1);
+            }
+            return;
+        }
+
+        solution.add(root.val);
+        findSum(result, solution, root.left, sum);
+        findSum(result, solution, root.right, sum);
+        solution.remove(solution.size()-1);
+    }
+}
+
+
+
+
+>>>>>>> 6200c8704614e918c8bfa5357c648dd1b4f7eb74
  // debug
     public static void main(String[] args) {
         Scanner cin = new Scanner(System.in);
