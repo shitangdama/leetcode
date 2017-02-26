@@ -1,43 +1,14 @@
-<<<<<<< HEAD
 # 滑动窗口，动态规划
 class Solution(object):
     def lengthOfLongestSubstring(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
         ans = 0
-        charMap = {}
-        tmp = 0
-        for i,char in enumerate(s):
-            if charMap.has_key(char):
-                tmp = max(charMap[char],tmp)
-            ans = max(ans,i-tmp+1)
-            charMap[char] = i+1
+        # left用于记录合法的左边界位置，last用于记录字符上一次出现的位置
+        left = 0
+        last = {}
+        for i in range(len(s)):
+            # 子串中出现重复字符，变更left至上一次s[i]出现位置之后，使得子串合法
+            if s[i] in last and last[s[i]] >= left:
+                left = last[s[i]] + 1
+            last[s[i]] = i
+            ans = max(ans, i - left + 1)
         return ans
-=======
-# Time:  O(n^2)
-# Space: O(1)
-
-class Solution:
-    # @param s, a string
-    # @return an integer
-    def lengthOfLongestSubstringTwoDistinct(self, s):
-        longest, start, distinct_count, visited = 0, 0, 0, [0 for _ in xrange(256)]
-        for i, char in enumerate(s):
-            if visited[ord(char)] == 0:
-                distinct_count += 1
-            visited[ord(char)] += 1
-            
-            while distinct_count > 2:
-                visited[ord(s[start])] -= 1
-                if visited[ord(s[start])] == 0:
-                    distinct_count -= 1
-                start += 1
-  
-            longest = max(longest, i - start + 1)
-        return longest
-    
-if __name__ == "__main__":
-    print Solution().lengthOfLongestSubstringTwoDistinct("eceba")
->>>>>>> 6200c8704614e918c8bfa5357c648dd1b4f7eb74

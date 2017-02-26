@@ -50,3 +50,21 @@ BFS：典型例题：P101 对于二叉树的层次遍历，P108对于图的走�
                             访问temp，并标记temp已被访问过，将temp的子相关节点加入队列
                             q.push(temp相关节点);
                           }
+DFS:典型例题：P107黑白图像
+格式：将所有节点遍历一遍，在遍历每个节点是，DFS的遍历该节点相关的所有节点
+void dfs(int x, int y)
+{
+    if(!mat[x][y] || vis[x][y]) return;     // 曾经访问过这个格子，或者当前格子是白色
+    vis[x][y] = 1;                          // 标记(x,y)已访问过
+    dfs(x-1,y-1); dfs(x-1,y); dfs(x-1,y+1);
+    dfs(x-1,y);               dfs(x,y+1);
+    dfs(x+1,y-1); dfs(x+1,y); dfs(x+1,y+1); // 递归访问周围的八个格子
+}
+主循环：
+for(int i = 1; i <= n; i++)
+for(int j = 1; j <= n; j++)
+if(!vis[i][j] && mat[i][j])
+{
+    count++;
+    dfs(i,j);
+} // 找到没有访问过的黑格
