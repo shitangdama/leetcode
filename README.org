@@ -1,0 +1,5 @@
+My leetcode accepted codes for reference,
+
+online judge platform(https://leetcode.com/).
+
+All rights reserved.
