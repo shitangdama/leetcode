@@ -16,7 +16,7 @@ class Solution:
         dummy.next = head
         slow, fast = dummy, dummy
         
-        for i in xrange(n):
+        for i in range(n):
             fast = fast.next
             
         while fast.next:

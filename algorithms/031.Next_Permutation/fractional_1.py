@@ -1,38 +1,34 @@
-class Solution:
-    # @param num, a list of integer
-    # @return nothing (void), do not return anything, modify num in-place instead.
-    def nextPermutation(self, num):
-        if not len(num):
+# 一个全排列问题,主要是先找最后一个逆序数，然后反转
+class Solution(object):
+    def nextPermutation(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: void Do not return anything, modify nums in-place instead.
+        """
+        k = -1
+        for i in range(len(nums)-2, -1, -1):
+            if nums[i] < nums[i+1]:
+                k = i
+                break
+        print(k)
+        if k == -1:
+            nums.reverse()
             return
+        l = -1
+        for i in range(len(nums)-1, k, -1):
+            if nums[i] > nums[k]:
+                l = i
+                break
+        print(l)
+        nums[l], nums[k] = nums[k], nums[l]
+        self.reverse(nums,k+1,len(nums)-1)
+    def reverse(self,nums,l,r):
+        while l < r:
+            nums[l],nums[r] = nums[r],nums[l]
+            l += 1
+            r -= 1
 
-        idx = len(num) - 2
-
-        # 1. find out the last wrong order
-        while idx >= 0 and num[idx] >= num[idx + 1]:
-            idx -= 1
-
-        # 2. swap
-        if idx >= 0:
-            i = idx + 1
-            while i < len(num) and num[i] > num[idx]:
-                i += 1
-            num[i - 1], num[idx] = num[idx], num[i - 1]
-
-        # 3. reverse
-        left, right = idx + 1, len(num) - 1
-        while left <= right:
-            num[left], num[right] = num[right], num[left]
-            left += 1
-            right -= 1
-
-# debug
-s = Solution()
-inp = [1, 2, 4, 3]
-s.nextPermutation(inp)
-print inp
-
-inp = [1, 3, 2, 3]
-s.nextPermutation(inp)
-print inp
-s.nextPermutation(inp)
-print inp
+a=[1,3,2]
+s= Solution()
+s.nextPermutation(a)
+print(a)
