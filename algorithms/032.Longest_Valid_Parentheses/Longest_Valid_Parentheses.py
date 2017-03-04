@@ -1,4 +1,4 @@
-# 动态规划，堆栈，
+# 动态规划，堆栈，Using Dynamic Programming
 
 class SolutionDp(object):
     def longestValidParentheses(self, s):
