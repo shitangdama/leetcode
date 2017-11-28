@@ -4,3 +4,4 @@ online judge platform(https://leetcode.com/).
 (http://www.jiuzhang.com/solutions/)
 
 All rights reserved.
+new project.
