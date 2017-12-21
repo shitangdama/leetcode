@@ -20,7 +20,7 @@ class Solution:
             i += 1
 
         while i < len(str) and str[i] >= '0' and str[i] <= '9':
-            if result > INT_MAX / 10 or (result == INT_MAX / 10 and ord(str[i]) - ord('0') > INT_MAX % 10):
+            if result > int(INT_MAX / 10) or (result == int(INT_MAX / 10) and ord(str[i]) - ord('0') > INT_MAX % 10):
                 if sign > 0:
                     return INT_MAX
                 else:
