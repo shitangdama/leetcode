@@ -23,6 +23,6 @@ class Solution:
 
 # debug
 s = Solution()
-print s.subsetsWithDup([1, 2, 2])
+# print s.subsetsWithDup([1, 2, 2])
 
 
