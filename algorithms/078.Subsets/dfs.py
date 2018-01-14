@@ -11,7 +11,8 @@ class Solution:
         # pass
         if len(nums) == tmp_len:
             # 这里要进行深拷贝,不然下面的tmp.pop会影响这里的数据
-            new_tmp = copy.copy(tmp)
+            # new_tmp = copy.copy(tmp)
+            new_tmp = list(tmp)
             result.append(new_tmp)
 
         else:

@@ -10,3 +10,7 @@ while(Problem is not solved)
         before which undo the current move.
     End For
 If none of the move works out, return false, NO SOLUTON.
+回朔在和dfs没什么区别
+这里主要是在于两种dfs
+一种记录了路径
+一种之关注与子节点

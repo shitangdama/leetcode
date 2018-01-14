@@ -1,5 +1,7 @@
 # 一个全排列问题,主要是先找最后一个逆序数，然后反转
-class Solution(object):
+# 字典序
+# 这个题不需要返回值
+class Solution:
     def nextPermutation(self, nums):
         """
         :type nums: List[int]
@@ -7,24 +9,27 @@ class Solution(object):
         """
         k = -1
         for i in range(len(nums)-2, -1, -1):
-            if nums[i] < nums[i+1]:
+            if nums[i] <= nums[i+1]:
                 k = i
                 break
-        print(k)
+        
         if k == -1:
-            nums.reverse()
-            return
+            self.reverse(nums , 0, len(nums)-1)
+            
         l = -1
         for i in range(len(nums)-1, k, -1):
             if nums[i] > nums[k]:
                 l = i
                 break
-        print(l)
+        
+
         nums[l], nums[k] = nums[k], nums[l]
-        self.reverse(nums,k+1,len(nums)-1)
-    def reverse(self,nums,l,r):
+
+        self.reverse(nums, k+1, len(nums)-1)
+
+    def reverse(self, num, l, r):
         while l < r:
-            nums[l],nums[r] = nums[r],nums[l]
+            num[l],num[r] = num[r],num[l]
             l += 1
             r -= 1
 
