@@ -1,20 +1,23 @@
-# Time:  O(n!)
-# Space: O(n)
-import math
-
 class Solution:
-    # @param num, a list of integer
-    # @return a list of lists of integers
-    def permute(self, num):
-        result = []
-        for n in range(math.factorial(len(num))):
-            self.next(num)
-            # print(num)
-            result.append(list(num))
+    def getPermutation(self, n, k):
+        """
+        :type n: int
+        :type k: int
+        :rtype: str
+        """
+        numbers = list(range(1, n+1))
+
+        tmp = self.factorial(n)
+        time = k%tmp
+        for n in range(k-1):    
+            self.next(numbers)
+        result = ""
+        for i in numbers:
+            result = result + str(i)
+
         return result
 
     def next(self,num):
-        
         k = -1
         for i in range(len(num)-2, -1, -1):
             if num[i] < num[i+1]:
@@ -38,12 +41,12 @@ class Solution:
             num[l],num[r] = num[r],num[l]
             l += 1
             r -= 1
-
     def factorial(self, n):
         tmp = 1
-        for i in n:
+        for i in range(n):
             tmp = tmp *(i+1)
         return tmp
 
-s = Solution()
-print(s.permute([1,2,3]))
+s =Solution()
+a = s.getPermutation(2,1)
+print(a)
