@@ -1,13 +1,11 @@
-# Time:  O(n!)
-# Space: O(n)
+# 有问题应该在
+
 import math
 
 class Solution:
-    # @param num, a list of integer
-    # @return a list of lists of integers
-    def permute(self, num):
+    def permuteUnique(self, num):
         result = []
-        for n in range(math.factorial(len(num))):
+        for n in range(self.factorial(num)):
             self.next(num)
             # print(num)
             result.append(list(num))
@@ -37,12 +35,15 @@ class Solution:
             num[l],num[r] = num[r],num[l]
             l += 1
             r -= 1
-
-    def factorial(self, n):
+    # 在这个地方要做限制
+    def factorial(self, num):
         tmp = 1
-        for i in n:
+        for i in range(len(num)):
+            if i > 0 and num[i-1] == num[i]:
+                continue
             tmp = tmp *(i+1)
+        print(tmp)
         return tmp
 
 s = Solution()
-print(s.permute([1,2,3]))
+print(s.permuteUnique([1,1,2,2]))
