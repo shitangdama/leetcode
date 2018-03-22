@@ -1,20 +1,36 @@
-class Solution2:
-    # @return a list of lists of length 4, [[val1,val2,val3,val4]]
+class Solution:
     def fourSum(self, nums, target):
-        nums, result, lookup = sorted(nums), [], {}
-        for i in range(0, len(nums) - 1):
-            for j in range(i + 1, len(nums)): 
-                if nums[i] + nums[j] not in lookup:
-                    lookup[nums[i] + nums[j]] = []
-                lookup[nums[i] + nums[j]].append([i, j])
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[List[int]]
+        """
+        results = []
+        self.find_n_sum(sorted(nums), target, 4, [], results)
+        return results
+        
+    def find_n_sum(self, nums, target, N, result, results):
+        if len(nums) < N or N < 2 or target < nums[0]*N or target > nums[-1]*N:  # early termination
+            return
+        if N == 2:
+            l,r = 0,len(nums)-1
+            while l < r:
+                s = nums[l] + nums[r]
+                if s == target:
+                    results.append(result + [nums[l], nums[r]])
+                    l += 1
+                    while l < r and nums[l] == nums[l-1]:
+                        l += 1
+                elif s < target:
+                    l += 1
+                else:
+                    r -= 1
+        else: # recursively reduce N
+            for i in range(len(nums)-N+1):
+                if i == 0 or (i > 0 and nums[i-1] != nums[i]):
+                    self.find_n_sum(nums[i+1:], target-nums[i], N-1, result+[nums[i]], results)     
+            
 
-        for i in lookup.keys():
-            if target - i in lookup:
-                for x in lookup[i]:
-                    for y in lookup[target -i]:
-                        [a, b], [c, d] = x, y
-                        if a is not c and a is not d and b is not c and b is not d:
-                            quad = sorted([nums[a], nums[b], nums[c], nums[d]])
-                            if quad not in result:
-                                result.append(quad)
-        return sorted(result)
+s = Solution()
+a = s.fourSum([1,0,-1,0,-2,2],0)
+print(a)
