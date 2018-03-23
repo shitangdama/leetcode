@@ -5,12 +5,12 @@ class Solution:
         :rtype: bool
         """
         if x<0 and x%10 == 0 and x ==0:
-            return false
+            return False
         
         copy, reverse = x, 0
         while copy:
             reverse = reverse*10 + copy%10
-            copy = int(copy/10)
+            copy = copy // 10
             
         return reverse == x
 

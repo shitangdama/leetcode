@@ -25,7 +25,6 @@ class Solution:
                 elif diff > 0:
                     k = k-1
                 else:
-                    print(nums[i], nums[j], nums[k])
                     return result
             
             i += 1
