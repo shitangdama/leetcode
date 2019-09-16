@@ -5,3 +5,5 @@ online judge platform(https://leetcode.com/).
 
 All rights reserved.
 new project.
+
+9.16 dp 全排列
