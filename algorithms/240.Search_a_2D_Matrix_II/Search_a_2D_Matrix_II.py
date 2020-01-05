@@ -6,12 +6,12 @@ class Solution:
         m = len(matrix)
         if m == 0:
             return False
-        
+
         n = len(matrix[0])
         if n == 0:
             return False
-            
-        count, i, j = 0, 0, n - 1
+
+        i, j = 0, n - 1
         while i < m and j >= 0:
             if matrix[i][j] == target:
                 return True
@@ -19,5 +19,5 @@ class Solution:
                 j -= 1
             else:
                 i += 1
-                
-        return False    
+
+        return False
