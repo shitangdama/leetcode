@@ -1,0 +1,1 @@
+path_sum[i, j] =  min(path_sum[i-1][j], path_sum[i][j-1]) + matrix[m][n]
