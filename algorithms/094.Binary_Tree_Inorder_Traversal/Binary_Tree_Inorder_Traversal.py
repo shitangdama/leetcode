@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 """
 Definition of TreeNode:
 class TreeNode:
@@ -6,24 +5,20 @@ class TreeNode:
         this.val = val
         this.left, this.right = None, None
 """
+# 先把迭代到最左边的叶子节点，把所有途中的root放进stack，当左边走不通了，开始往res里面存数，并往右边走。
 class Solution:
-    """
-    @param root: The root of binary tree.
-    @return: Preorder in list which contains node values.
-    """
-    def preorderTraversal(self, root):
-        if root is None:
-            return []
-        stack = [root]
-        preorder = []
-        while stack:
-            node = stack.pop()
-            preorder.append(node.val)
-            if node.right:
-                stack.append(node.right)
-            if node.left:
-                stack.append(node.left)
-        return preorder
+    def inorderTraversal(self, root: TreeNode) -> List[int]:
+
+        res, stack = [], []
+        while stack or root:
+            if root:
+                stack.append(root)
+                root = root.left
+            else:
+                node = stack.pop()
+                res.append(node.val)
+                root = node.right
+        return res
 # Time:  O(n)
 # Space: O(1)
 class TreeNode:
@@ -32,162 +27,56 @@ class TreeNode:
         self.left = None
         self.right = None
 
-# Morris Traversal Solution
-class Solution:
-    # @param root, a tree node
-    # @return a list of integers
-    def postorderTraversal(self, root):
-        dummy = TreeNode(0)
-        dummy.left = root
-        result, cur = [], dummy
-        while cur:
-            if cur.left is None:
-                cur = cur.right
-            else:
-                node = cur.left
-                while node.right and node.right != cur:
-                    node = node.right
-            
-                if node.right is None:
-                    node.right = cur
-                    cur = cur.left
-                else:
-                    result += self.traceBack(cur.left, node)
-                    node.right = None
-                    cur = cur.right
-        
-        return result
-    
-    def traceBack(self, frm, to):
-        result, cur = [], frm
-        while cur is not to:
-            result.append(cur.val)
-            cur = cur.right
-        result.append(to.val)
-        result.reverse()
-        return result
+# # Morris Traversal Solution
+# class Solution:
+#     # @param root, a tree node
+#     # @return a list of integers
+#     def postorderTraversal(self, root):
+#         dummy = TreeNode(0)
+#         dummy.left = root
+#         result, cur = [], dummy
+#         while cur:
+#             if cur.left is None:
+#                 cur = cur.right
+#             else:
+#                 node = cur.left
+#                 while node.right and node.right != cur:
+#                     node = node.right
 
-# Time:  O(n)
-# Space: O(n)
-# Stack Solution 
-class Solution2:
-    # @param root, a tree node
-    # @return a list of integers
-    def postorderTraversal(self, root):
-        result, stack, current, last_traversed = [], [], root, None
-        while stack or current:
-            if current:
-                stack.append(current)
-                current = current.left
-            else:
-                parent = stack[-1]
-                if parent.right in (None, last_traversed):
-                    result.append(parent.val)
-                    last_traversed = stack.pop()
-                else:
-                    current = parent.right
-        return result
+#                 if node.right is None:
+#                     node.right = cur
+#                     cur = cur.left
+#                 else:
+#                     result += self.traceBack(cur.left, node)
+#                     node.right = None
+#                     cur = cur.right
 
+#         return result
+
+#     def traceBack(self, frm, to):
+#         result, cur = [], frm
+#         while cur is not to:
+#             result.append(cur.val)
+#             cur = cur.right
+#         result.append(to.val)
+#         result.reverse()
+#         return result
+
+class Solution2(object):
+    def inorderTraversal(self, root):
+        self.res = []
+        self.dfs(root)
+        return self.res
+
+    def dfs(self, root):
+        if not root:
+            return
+        self.dfs(root.left)
+        self.res.append(root.val)
+        self.dfs(root.right)
 if __name__ == "__main__":
     root = TreeNode(1)
     root.right = TreeNode(2)
     root.right.left = TreeNode(3)
     result = Solution().postorderTraversal(root)
     print result
-=======
-"""
-Definition of TreeNode:
-class TreeNode:
-    def __init__(self, val):
-        this.val = val
-        this.left, this.right = None, None
-"""
-class Solution:
-    """
-    @param root: The root of binary tree.
-    @return: Preorder in list which contains node values.
-    """
-    def preorderTraversal(self, root):
-        if root is None:
-            return []
-        stack = [root]
-        preorder = []
-        while stack:
-            node = stack.pop()
-            preorder.append(node.val)
-            if node.right:
-                stack.append(node.right)
-            if node.left:
-                stack.append(node.left)
-        return preorder
-# Time:  O(n)
-# Space: O(1)
-class TreeNode:
-    def __init__(self, x):
-        self.val = x
-        self.left = None
-        self.right = None
-
-# Morris Traversal Solution
-class Solution:
-    # @param root, a tree node
-    # @return a list of integers
-    def postorderTraversal(self, root):
-        dummy = TreeNode(0)
-        dummy.left = root
-        result, cur = [], dummy
-        while cur:
-            if cur.left is None:
-                cur = cur.right
-            else:
-                node = cur.left
-                while node.right and node.right != cur:
-                    node = node.right
-            
-                if node.right is None:
-                    node.right = cur
-                    cur = cur.left
-                else:
-                    result += self.traceBack(cur.left, node)
-                    node.right = None
-                    cur = cur.right
-        
-        return result
-    
-    def traceBack(self, frm, to):
-        result, cur = [], frm
-        while cur is not to:
-            result.append(cur.val)
-            cur = cur.right
-        result.append(to.val)
-        result.reverse()
-        return result
-
-# Time:  O(n)
-# Space: O(n)
-# Stack Solution 
-class Solution2:
-    # @param root, a tree node
-    # @return a list of integers
-    def postorderTraversal(self, root):
-        result, stack, current, last_traversed = [], [], root, None
-        while stack or current:
-            if current:
-                stack.append(current)
-                current = current.left
-            else:
-                parent = stack[-1]
-                if parent.right in (None, last_traversed):
-                    result.append(parent.val)
-                    last_traversed = stack.pop()
-                else:
-                    current = parent.right
-        return result
-
-if __name__ == "__main__":
-    root = TreeNode(1)
-    root.right = TreeNode(2)
-    root.right.left = TreeNode(3)
-    result = Solution().postorderTraversal(root)
-    print result
->>>>>>> 6200c8704614e918c8bfa5357c648dd1b4f7eb74
