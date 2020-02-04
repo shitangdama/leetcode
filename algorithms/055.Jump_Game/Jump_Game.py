@@ -1,37 +1,17 @@
-<<<<<<< HEAD
 # Time:  O(n)
 # Space: O(1)
 
 class Solution:
-    # @param A, a list of integers
-    # @return a boolean
-    def canJump(self, A):
-        reachable = 0
-        for i, length in enumerate(A):
-            if i > reachable:
-                break
-            reachable = max(reachable, i + length)
-        return reachable >= len(A) - 1
-    
-if __name__ == "__main__":
-    print Solution().canJump([2,3,1,1,4])
-    print Solution().canJump([3,2,1,0,4])
-=======
-# Time:  O(n)
-# Space: O(1)
+    def canJump(self, nums: List[int]) -> bool:
+        m = 0
+        for i in range(len(nums)):
+            if i > m:
+                return False
 
-class Solution:
-    # @param A, a list of integers
-    # @return a boolean
-    def canJump(self, A):
-        reachable = 0
-        for i, length in enumerate(A):
-            if i > reachable:
-                break
-            reachable = max(reachable, i + length)
-        return reachable >= len(A) - 1
-    
+            m = max(m, i+nums[i])
+
+        return True
+
 if __name__ == "__main__":
-    print Solution().canJump([2,3,1,1,4])
-    print Solution().canJump([3,2,1,0,4])
->>>>>>> 6200c8704614e918c8bfa5357c648dd1b4f7eb74
+    print(Solution().canJump([2,3,1,1,4]))
+    print(Solution().canJump([3,2,1,0,4]))

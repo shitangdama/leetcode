@@ -23,7 +23,7 @@ class Solution:
 
         cur.append(root.val)
         self.dfs(result, cur, root.left, sum - root.val)
-        self.dfs(result, cur,root.right, sum - root.val)
+        self.dfs(result, cur, root.right, sum - root.val)
         cur.pop()
         return result
 
