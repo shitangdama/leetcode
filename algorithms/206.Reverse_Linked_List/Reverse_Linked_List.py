@@ -1,6 +1,4 @@
-
 class Solution:
-
     def reverse(self, head):
         curt = None
         while head != None:
